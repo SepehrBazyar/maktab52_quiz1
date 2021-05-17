@@ -7,3 +7,5 @@ p2 = sorted(books, key = lambda x: x.name)
 p3 = sorted(books, key = lambda x: x.publish_date, reverse = True)
 
 p4 = list(filter(books, lambda x: x.author == 'George Orwell'))
+p4 = list(filter(books, lambda x: x.publisher is ['Akbar pub', 'Asqar pub']))
+p4 = list(filter(books, lambda x: x.publish_date.year >= 2001))
