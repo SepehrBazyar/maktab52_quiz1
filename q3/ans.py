@@ -2,10 +2,14 @@ import sys
 
 def swap_case(functions):
     def wrapper(*args, **kwargs):
-        return functions(*args,**kwargs).swapcase()
+        answer = functions(*args,**kwargs)
+        output = []
+        for item in answer:
+            output.append(item.swapcase())
+        return output
     return wrapper
 
-def duplicate(path: str) -> str:
+def duplicate_gen(path: str) -> str:
     with open(path) as fl:
         lines = fl.readlines()
     for line in lines:
@@ -14,5 +18,11 @@ def duplicate(path: str) -> str:
             if not len(word) == len(set(word)):
                 yield word
 
-for item in duplicate('test.txt'):
+@swap_case
+def duplicate_fun(path: str) -> list:
+    words = [word for word in duplicate_gen(path)]
+    return words
+
+for item in duplicate_fun(sys.argv[1]):
     print(item)
+
