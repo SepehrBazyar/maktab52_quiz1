@@ -5,7 +5,7 @@ def swap_case(gen):
         output = []
         for item in gen(*args, **kwargs):
             output.append(item.swapcase())
-            yield output[-1]
+        return output
     return wrapper
 
 @swap_case
